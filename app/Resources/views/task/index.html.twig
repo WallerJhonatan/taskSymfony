@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} tasks {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
+{% endblock %}
+
+{% block body %}
+    <b>{{ name }} ---- {{"now"|date("m/d/Y") }} task</b>
+
+
+    {% if name == 'waller' %}
+        <br> waller
+    {% endif %}
+
+    <ul>
+        {% for task in tasks %}
+
+        <li>
+            <button type="button" class="btn btn-lg btn-info">
+                <a href="{{ path('showTask') }}">{{ task }}</a>
+                teste
+            </button>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="alert alert-success" role="alert">
+        <strong>Well done!</strong> You successfully read this important alert message.
+    </div>
+{% endblock %}
