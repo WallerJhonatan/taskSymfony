@@ -19,10 +19,9 @@
         {% for task in tasks %}
 
         <li>
-            <button type="button" class="btn btn-lg btn-info">
-                <a href="{{ path('showTask') }}">{{ task }}</a>
-                teste
-            </button>
+            <a href="{{ path('showTask') }}">
+                <button type="button" class="btn btn-lg btn-info">{{ task }}</button>
+            </a>
         </li>
         {% endfor %}
     </ul>
