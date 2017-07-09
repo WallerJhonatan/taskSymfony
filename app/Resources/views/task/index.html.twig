@@ -10,7 +10,6 @@
 {% block body %}
     <b>{{ name }} ---- {{"now"|date("m/d/Y") }} task</b>
 
-
     {% if name == 'waller' %}
         <br> waller
     {% endif %}
@@ -19,8 +18,8 @@
         {% for task in tasks %}
 
         <li>
-            <a href="{{ path('showTask') }}">
-                <button type="button" class="btn btn-lg btn-info">{{ task }}</button>
+            <a href="{{ path('showTask', {'id': task.id}) }}">
+                <button type="button" class="btn btn-lg btn-info">{{ task.name }} ( {{ task.dataCriacao | date('d/m/Y') }} )</button>
             </a>
         </li>
         {% endfor %}

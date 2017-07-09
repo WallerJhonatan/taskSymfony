@@ -2,7 +2,9 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\AppBundle;
 use AppBundle\Entity\Task;
+use Doctrine\ORM\Mapping\Entity;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -12,11 +14,19 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class TaskController extends Controller
 {
     /**
-     * @Route("/tasks/show", name="showTask")
+     * @Route("/tasks/show/{id}", name="showTask")
      */
-    public function showAction()
+    public function showAction($id)
     {
-        return $this->render(':task:show.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $task = $em->getRepository('AppBundle:Task')->find($id);
+
+        if(!$task){
+            throw $this->createNotFoundException("não foi encontrado nenhum registro!");
+        }
+        return $this->render(':task:show.html.twig',[
+            'task' => $task
+        ]);
     }
 
     /**
@@ -24,15 +34,11 @@ class TaskController extends Controller
      */
     public function indexAction($name)
     {
+        $em = $this->getDoctrine()->getManager();
 
-        $tasks = [
-            'andar',
-            'sair',
-            'chegar'
-        ];
+        $tasks = $em->getRepository("AppBundle:Task")->findAll();
 
         return $this->render('task/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
             'name' => $name,
             'tasks' => $tasks
         ]);
@@ -44,13 +50,15 @@ class TaskController extends Controller
      */
     public function apiAction()
     {
-        $tasks = [
-            'andar',
-            'sair',
-            'chegar'
-        ];
+        $em = $this->getDoctrine()->getManager();
+        $tasks = $em->getRepository("AppBundle:Task")->findAll();
 
-        return new JsonResponse($tasks);
+        $json = array();
+        foreach ($tasks as $task){
+            $json[] = $task->getName();
+        }
+
+        return new JsonResponse($json);
     }
 
     /**
