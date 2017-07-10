@@ -8,7 +8,6 @@ use Doctrine\ORM\Mapping\Entity;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\BrowserKit\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class TaskController extends Controller
@@ -35,7 +34,6 @@ class TaskController extends Controller
     public function indexAction($name)
     {
         $em = $this->getDoctrine()->getManager();
-
         $tasks = $em->getRepository("AppBundle:Task")->findAll();
 
         return $this->render('task/index.html.twig', [
