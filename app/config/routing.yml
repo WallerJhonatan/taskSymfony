@@ -1,3 +1,6 @@
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+entrypoint:
+   prefix: /api
+   resource: '@AppBundle/Resources/config/router.yml'
+
+api_login_check:
+   path: /api/login_check

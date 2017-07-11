@@ -16,14 +16,11 @@
 
     <ul>
         {% for task in tasks %}
-            <form action="{{ path('showTask') }}" method="post">
-
         <li>
             <a href="{{ path('showTask', {'id': task.id}) }}">
                 <button type="button" class="btn btn-lg btn-info">{{ task.name }} ( {{ task.dataCriacao | date('d/m/Y') }} )</button>
             </a>
         </li>
-            </form>
 
         {% endfor %}
     </ul>

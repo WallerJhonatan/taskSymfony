@@ -10,11 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Task
 {
-    public function __construct()
-    {
-        $this->setDataCriacao(new \DateTime());
-    }
-
     /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
