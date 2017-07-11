@@ -6,10 +6,15 @@ security:
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
-        our_db_provider:
+        your_db_provider:
             entity:
                 class: AppBundle:User
                 property: username
+        your_db_provider:
+            entity:
+                class: AppBundle:User
+                property: username
+
 
     firewalls:
       # disables authentication for assets and the profiler, adapt it according to your needs
@@ -20,7 +25,7 @@ security:
         login:
             pattern: ^/api/login
             stateless: true
-            anonymous: true
+            anonymous: ~
             form_login:
                 check_path:             /api/login_check
                 success_handler:        lexik_jwt_authentication.handler.authentication_success
@@ -33,7 +38,22 @@ security:
             guard:
                 authenticators:
                   - lexik_jwt_authentication.jwt_token_authenticator
- 
+                  - AppBundle\Security\TokenAuthenticator
+                entry_point: AppBundle\Security\TokenAuthenticator
+
+        main:
+            pattern: ^/api
+            anonymous: ~
+            logout: ~
+            guard:
+                authenticators:
+                  - lexik_jwt_authentication.jwt_token_authenticator
+                  - AppBundle\Security\TokenAuthenticator
+                entry_point: AppBundle\Security\TokenAuthenticator
+#            logout:
+#                path:  /logout
+#                target: /login
+
     access_control:
         - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
