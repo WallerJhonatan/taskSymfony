@@ -1,6 +1,6 @@
 <?php
 
-namespace Waller\AppBundle\Entity;
+namespace Waller\ApiBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
