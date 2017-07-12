@@ -1,14 +1,14 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace Waller\AppBundle\Controller;
 
-use AppBundle\AppBundle;
-use AppBundle\Entity\Task;
-use Doctrine\ORM\Mapping\Entity;
+use Waller\AppBundle\Entity\Task;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class TaskController extends Controller
 {

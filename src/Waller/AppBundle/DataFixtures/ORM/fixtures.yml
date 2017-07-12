@@ -1,9 +1,9 @@
-AppBundle\Entity\Task:
+Waller\AppBundle\Entity\Task:
   task_{1..25}:
     name: '<name()>'
     data_criacao: '<dateTimeBetween("-200 days", "now")>'
     status: '<numberBetween(0,1)>'
 
-AppBundle\Entity\User:
+Waller\AppBundle\Entity\User:
   user1:
     __construct: ['admin','$2a$08$jHZj/wJfcVKlIwr5AvR78euJxYK7Ku5kURNhNx.7.CSIJ3Pq6LEPC']
