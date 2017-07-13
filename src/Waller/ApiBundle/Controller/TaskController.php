@@ -16,12 +16,12 @@ class TaskController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $task = $em->getRepository('AppBundle:Task')->find($id);
+        $task = $em->getRepository('ApiBundle:Task')->find($id);
 
         if(!$task){
             throw $this->createNotFoundException("não foi encontrado nenhum registro!");
         }
-        return $this->render(':task:show.html.twig',[
+        return $this->render(':Task:show.html.twig',[
             'task' => $task
         ]);
     }
@@ -32,9 +32,9 @@ class TaskController extends Controller
     public function indexAction($name)
     {
         $em = $this->getDoctrine()->getManager();
-        $tasks = $em->getRepository("AppBundle:Task")->findAll();
+        $tasks = $em->getRepository("ApiBundle:Task")->findAll();
 
-        return $this->render('task/index.html.twig', [
+        return $this->render('Task/index.html.twig', [
             'name' => $name,
             'tasks' => $tasks
         ]);
@@ -47,7 +47,7 @@ class TaskController extends Controller
     public function apiAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $tasks = $em->getRepository("AppBundle:Task")->findAll();
+        $tasks = $em->getRepository("ApiBundle:Task")->findAll();
 
         $json = array();
         foreach ($tasks as $task){

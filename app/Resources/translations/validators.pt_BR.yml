@@ -1,0 +1,6 @@
+user.name.unique: Nome de usuário já está sendo usuado
+user.name.not_blank: Nome de usuário não pode ser vazio.
+
+user.email.invalid: Email inválido.
+user.email.unique: Email já está sendo usado.
+
