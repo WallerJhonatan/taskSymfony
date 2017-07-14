@@ -33,10 +33,16 @@ class RegistrationController extends Controller
             $em->persist($user);
             $em->flush();
 
-            // ... do any other work - like sending them an email, etc
-            // maybe set a "flash" success message for the user
+            $request->getSession()
+                ->getFlashBag()
+                ->add('success', 'Cadastrado com sucesso! Enviamos um email de confirmação para seu endereço!')
+            ;
 
-            return $this->redirectToRoute('tasks');
+            $url = $this->generateUrl('login');
+
+            return $this->redirect($url);
+
+//            return $this->redirectToRoute('login');
         }
 
         return $this->render(
