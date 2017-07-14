@@ -5,5 +5,7 @@ Waller\AppBundle\Entity\Task:
     status: '<numberBetween(0,1)>'
 
 Waller\AppBundle\Entity\User:
-  user1:
-    __construct: ['admin','$2a$08$jHZj/wJfcVKlIwr5AvR78euJxYK7Ku5kURNhNx.7.CSIJ3Pq6LEPC']
+  user:
+    name: 'admin'
+    email: 'waller.jhonatanc@gmail.com'
+    password: '$2a$08$jHZj/wJfcVKlIwr5AvR78euJxYK7Ku5kURNhNx.7.CSIJ3Pq6LEPC'
