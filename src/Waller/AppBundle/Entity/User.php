@@ -31,7 +31,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
-     *
+     * @Assert\NotBlank()
      */
     private $username;
 
@@ -42,6 +42,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Assert\NotBlank()
      */
     private $password;
 

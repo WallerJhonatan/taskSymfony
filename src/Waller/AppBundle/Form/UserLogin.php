@@ -7,8 +7,11 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+<<<<<<< HEAD
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+=======
+>>>>>>> dev
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class UserLogin extends AbstractType
